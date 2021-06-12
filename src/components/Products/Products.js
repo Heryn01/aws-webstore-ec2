@@ -1,8 +1,7 @@
 import React from 'react';
-
 import axios from 'axios';
 
-export default class PersonList extends React.Component {
+export default class Products extends React.Component {
   state = {
     products: []
   }
