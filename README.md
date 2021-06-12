@@ -1,4 +1,23 @@
-# Getting Started with Create React App
+# Running for the first time:
+
+This app has two components:
+1. Backend express server "/server/server.js"
+1. Frontend React App "src/..."
+
+To run, you will need to first install dependencies:
+```npm install```
+
+And then in one terminal navigate to the /server folder and run the server by typing in the following:
+```node server.js```
+
+Then in another terminal, navigate to the product directory and run 
+```npm start```
+
+The page should automatically open in your browser, but you can also visit it at "http://localhost:3000"
+
+
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

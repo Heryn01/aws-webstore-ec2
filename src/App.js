@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import Axios from 'axios';
-import Products from './components/products/Products';
+import Products from './components/Products/Products';
 
 
 function App() {
