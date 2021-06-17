@@ -17,8 +17,15 @@ export default class Products extends React.Component {
   render() {
     return (
       <div>
-        Product Page<br />
-        {this.state.products.map(p => <p>{p}</p>)}
+        {this.state.products.map(product => 
+          <div>
+            <h1>{product.ProductName} - {product.Price}</h1>
+            <b>Category:</b>{product.ProductType}<br />
+            <i>Description:</i>{product.Description}<br />
+
+            <button onClick={() => alert("Added to cart")}>Add to Cart</button>
+          </div>  
+        )}
       </div>
     )
   }

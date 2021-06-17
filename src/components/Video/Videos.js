@@ -18,8 +18,8 @@ export default class Video extends React.Component {
     return (
       <div>
         [Video Player]<br /><br />
-        <button>play</button>
-        <button>pause</button>
+        <button className="nav-bar-button">play</button>
+        <button className="nav-bar-button">pause</button>
       </div>
     )
   }

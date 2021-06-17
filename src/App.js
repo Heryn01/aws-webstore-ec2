@@ -22,7 +22,7 @@ function App() {
   
   Axios({
     method: "GET",
-    url: "http://localhost:8081/home",
+    url: "http://localhost:8081/landing",
     headers: {
       "Content-Type": "application/json"
     }
