@@ -193,7 +193,7 @@ app.get("/department", (req, res) => {
 app.get("/reporting", (req, res) => {
     
   request = new Request("SELECT * FROM Product; SELECT * FROM RecentPurchaseReport; SELECT * from Purchase", function(err) {  
-    if (err) {  
+    if (err) {
         console.log(err);
     }  
   });
@@ -211,35 +211,8 @@ app.get("/reporting", (req, res) => {
     products = products.concat(jsonData);
   });
 
-  let purchases = [];
-  request.on('row', function(columns) { 
-    let jsonData = {};
-    columns.forEach(function(column) {  
-      if (column.value === null) {  
-        console.log('NULL');  
-      } else {  
-        jsonData[column.metadata.colName] = column.value;
-      }  
-    });  
-    purchases = purchases.concat(jsonData);
-  });
-
-  let receipt = [];
-  request.on('row', function(columns) { 
-    let jsonData = {};
-    columns.forEach(function(column) {  
-      if (column.value === null) {  
-        console.log('NULL');  
-      } else {  
-        jsonData[column.metadata.colName] = column.value;
-      }  
-    });  
-    receipt = receipt.concat(jsonData);
-  });
-
-
   request.on("requestCompleted", function (rowCount, more) {
-    res.json({ product: products, history: purchases, purchase:receipt });
+    res.json({ product: products});
   });
 
   connection.execSql(request);
