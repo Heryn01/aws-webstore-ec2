@@ -192,7 +192,7 @@ app.get("/department", (req, res) => {
 
 app.get("/reporting", (req, res) => {
     
-  request = new Request("SELECT * FROM Product; SELECT * FROM RecentPurchaseReport; SELECT * from Purchase", function(err) {  
+  request = new Request("SELECT * FROM RecentPurchaseReport", function(err) {  
     if (err) {  
         console.log(err);
     }  

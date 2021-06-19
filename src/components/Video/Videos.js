@@ -1,26 +1,12 @@
-import React from 'react';
-import axios from 'axios';
+import React from "react";
+import "./styles.css";
+import Youtube from "./Youtube";
 
-export default class Video extends React.Component {
-  state = {
-    data: []
-  }
-
-  componentDidMount() {
-    axios.get("http://localhost:8081/video")
-      .then(res => {
-        const data = res.data.cart;
-        this.setState({ data });
-      })
-  }
-
-  render() {
-    return (
-      <div>
-        [Video Player]<br /><br />
-        <button className="nav-bar-button">play</button>
-        <button className="nav-bar-button">pause</button>
-      </div>
-    )
-  }
+export default function App() {
+  return (
+    <div className="App">
+      <h1>Deer Hunting</h1>
+      <Youtube embedId="QPNbbCgV_Tc" />
+    </div>
+  );
 }
