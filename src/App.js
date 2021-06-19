@@ -18,19 +18,6 @@ function App() {
 
 
   let data;
-
-  
-  Axios({
-    method: "GET",
-    url: "http://localhost:8081/landing",
-    headers: {
-      "Content-Type": "application/json"
-    }
-  }).then(res => {
-    //console.log(res.data.message);
-    data = res.data.message;
-  });
-  
   
   let component;
 
