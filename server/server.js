@@ -124,34 +124,28 @@ app.get("/products", async (req, res) => {
 
 });
 
-app.get("/landing", (req, res) => {
-    
-  request = new Request("SELECT * FROM Employee;", function(err) {  
-    if (err) {  
-        console.log(err);
-    }  
-  });
+ app.post("/cart", (req, res) => {
 
-  let rows = [];
-  request.on('row', function(columns) { 
-    let jsonData = {};
-    columns.forEach(function(column) {  
-      if (column.value === null) {  
-        console.log('NULL');  
-      } else {  
-        jsonData[column.metadata.colName] = column.value;
+  const products = req.body.products;
+  const timeOfPurchase = req.body.time;
+
+  products.forEach(product => {
+    // Put your SQL query here
+    const insertString = "INSERT INTO Purchase (PurchaseDate, PurchaseQuantity, ProductID, PurchaseID) VALUES ('" + timeOfPurchase + "', 1, " + product.id + ", " + parseInt(Math.floor(Math.random() * 500000000) + 4) + ");";
+    request = new Request(insertString, function(err) {  
+      if (err) {  
+          console.log(err);
       }  
-    });  
-    rows = rows.concat(jsonData);
-  });  
+    });
+  })
 
   request.on("requestCompleted", function (rowCount, more) {
-    res.json({ employees: rows });
+    res.status(200).send();
   });
 
   connection.execSql(request);
-  
- });
+ 
+ })
 
 // END OF NATHAN'S ROUTES
 
