@@ -79,8 +79,19 @@ app.get("/endpoint-name", (req, res) => {
  
  })
 
-*/ 
+*/
 
+app.options("/*", function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+  res.sendStatus(200);
+});
+
+app.all('*', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
+});
 
 // NATHAN'S ROUTES BEGIN
 
@@ -135,12 +146,12 @@ app.get("/landing", (req, res) => {
   });  
 
   request.on("requestCompleted", function (rowCount, more) {
-    res.json({ products: rows });
+    res.json({ employees: rows });
   });
 
   connection.execSql(request);
- 
- })
+  
+ });
 
 // END OF NATHAN'S ROUTES
 
