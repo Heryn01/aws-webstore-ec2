@@ -147,6 +147,88 @@ app.get("/products", async (req, res) => {
  
  })
 
+ app.get("/broker", (req, res) => {
+    
+  // Put your SQL query here
+  request = new Request("SELECT * FROM Product;", function(err) {  
+    if (err) {  
+        console.log(err);
+    }  
+  });
+
+  // The following code will store the values from the SQL query in an array of json objects called rows
+  let rows = [];
+  request.on('row', function(columns) { 
+    let jsonData = {};
+    columns.forEach(function(column) {  
+      if (column.value === null) {  
+        console.log('NULL');  
+      } else {  
+        jsonData[column.metadata.colName] = column.value;
+      }  
+    });  
+    rows = rows.concat(jsonData);
+  });  
+
+  // This will send the data from the SQL query to the front-end
+  request.on("requestCompleted", function (rowCount, more) {
+    res.json({ data: rows });
+  });
+
+  connection.execSql(request);
+ 
+ })
+
+ app.post("/new-product", (req, res) => {
+   
+  const insertString = "INSERT INTO Product (ProductID, ProductName, ProductType, Price, Description) VALUES (" + parseInt(Math.floor(Math.random() * 500000000) + 4) + ", '" + req.body.name + "', '" + req.body.cat + "', " + req.body.price + ", '" + req.body.desc + "');";
+  request = new Request(insertString, function(err) {  
+    if (err) {  
+        console.log(err);
+    }  
+  });
+
+  request.on("requestCompleted", function (rowCount, more) {
+    res.status(200).send();
+  });
+
+  connection.execSql(request);
+})
+
+ app.post("/edit-product", (req, res) => {
+
+    const updateString = "UPDATE Product SET ProductName = '" + req.body.name + "', ProductType = '" + req.body.cat + "', Price = " + req.body.price + ", Description = '" + req.body.desc + "' WHERE ProductID = '" + req.body.id + "';";
+    request = new Request(updateString, function(err) {  
+      if (err) {  
+          console.log(err);
+      }  
+    });
+
+  request.on("requestCompleted", function (rowCount, more) {
+    res.status(200).send();
+  });
+
+  connection.execSql(request);
+ 
+ })
+
+ app.post("/delete-product", (req, res) => {
+
+    const insertString = "DELETE FROM Product WHERE ProductID = '" + req.body.id + "';";
+    request = new Request(insertString, function(err) {  
+      if (err) {  
+          console.log(err);
+      }  
+    });
+
+  request.on("requestCompleted", function (rowCount, more) {
+    res.status(200).send();
+  });
+
+  connection.execSql(request);
+ 
+ })
+
 // END OF NATHAN'S ROUTES
 
 // BEGINNING OF JOSH'S ROUTES
