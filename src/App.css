@@ -70,6 +70,10 @@
   border-width: 0;
 }
 
+.nav-bar-button-selected:hover {
+  cursor: pointer;
+}
+
 .main {
   background-color: #ffffff;
   margin: 2%;

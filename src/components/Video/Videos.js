@@ -4,8 +4,9 @@ import Youtube from "./Youtube";
 
 export default function App() {
   return (
-    <div className="App">
-      <h1>Deer Hunting</h1>
+    <div>
+      <div className="page-header">Deer Hunting</div>
+      <br /><br />
       <Youtube embedId="QPNbbCgV_Tc" />
     </div>
   );

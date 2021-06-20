@@ -16,7 +16,7 @@ function EditProduct(product) {
       <b>Price: </b><input value={price} onChange={e => setPrice(e.target.value)}/><br /><br />
       <b>Category: </b><input value={cat} onChange={e => setCat(e.target.value)}/><br /><br />
       <b>Description: </b><input value={desc} onChange={e => setDesc(e.target.value)}/><br /><br />
-      <button onClick={() => {
+      <button className="nav-bar-button-selected" onClick={() => {
         axios.post("http://localhost:8081/edit-product", {
           id: product.product.ProductID,
           name: name,
@@ -30,7 +30,7 @@ function EditProduct(product) {
           }
         })
       }}>Save Changes</button>
-      <button onClick={() => {
+      <button className="nav-bar-button" onClick={() => {
         axios.post("http://localhost:8081/delete-product", {id: product.product.ProductID})
         .then(res => {
           if(res.status === 200) {

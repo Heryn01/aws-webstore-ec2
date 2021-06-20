@@ -18,7 +18,9 @@ export default class Products extends React.Component {
   render() {
     return (
       <div>
-      <JsonToTable json={this.state.reports} />
+        <div className="page-header">Reporting</div>
+        <br /><br />
+        <JsonToTable json={this.state.reports} />
     </div>
     )
   }

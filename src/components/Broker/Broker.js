@@ -47,27 +47,26 @@ export default class Broker extends React.Component {
 
   render() {
 
-
-    //console.log(this.state.products);
-    console.log(this.state);
     const products = this.state.products;
     return (
         <table style={{"width": "100%"}}>
-          <td style={{"width": "60%"}}>
-            <h2>Edit Products</h2>
+          <td style={{"width": "50%"}}>
+            <div className="page-header">Edit Products</div>
+            <br /><br />
             {products.map(product =>
               <EditProduct product={product} /> 
             )}
           </td>
-          <td style={{"width": "40%"}}>
-            <h2>Add New Product</h2>
+          <td style={{"width": "50%"}}>
+            <div className="page-header">Add New Product</div>
+            <br /><br />
             <div className="add-product">
             <b>Name: </b> <input onChange={this.handleNameChange}/><br /><br />
             <b>Price: </b> <input onChange={this.handlePriceChange}/><br /><br />
             <b>Category: </b> <input onChange={this.handleCatChange}/><br /><br />
             <b>Description: </b> <input onChange={this.handleDescriptionChange}/><br /><br />
 
-            <button onClick={() => {
+            <button className="nav-bar-button-selected" onClick={() => {
               axios.post("http://localhost:8081/new-product", {
                 name: this.state.name,
                 desc: this.state.desc,
