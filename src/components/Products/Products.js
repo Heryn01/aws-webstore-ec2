@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import '../../App.css';
 
 export default class Products extends React.Component {
 
@@ -23,13 +24,17 @@ export default class Products extends React.Component {
   render() {
     return (
       <div>
+        <div className="page-header">
+          ACME Products
+        </div>
         {this.state.products.map(product => 
-          <div>
+          <div className="product">
             <h1>{product.ProductName} - ${(product.Price).toFixed(2)}</h1>
-            <b>Category: </b>{product.ProductType}<br />
-            <i>Description: </i>{product.Description}<br />
-            <button onClick={() => {
-                alert("Added to cart");
+            <h4>{product.Description}</h4>
+              Category: {product.ProductType}<br /><br />
+
+            <button className="nav-bar-button" onClick={() => {
+                alert(product.ProductName + " added to cart!");
                 this.props.updateCart(this.props.cart.concat({name: product.ProductName, price: product.Price, id: product.ProductID}));
               }}
             >

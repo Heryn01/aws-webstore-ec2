@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  background-color: #D73232;
+  height: 100%;
+  min-height: 1500px;
 }
 
 .App-logo {
@@ -37,6 +40,64 @@
   }
 }
 
+.header {
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 .nav-bar-button {
-  margin-left: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 12px;
+  background-color: #ffffff;
+  color:#D73232;
+  border-width:0;
+}
+
+.nav-bar-button:hover {
+  cursor: pointer;
+  background-color: #D73232;
+  color: #ffffff;
+}
+
+.nav-bar-button-selected {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 12px;
+  cursor: pointer;
+  background-color: #D73232;
+  color: #ffffff;
+  border-width: 0;
+}
+
+.main {
+  background-color: #ffffff;
+  margin: 2%;
+  min-height: 1200px;
+  padding: 5%;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.page-header {
+  background-color: #D73232;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-size: 40px;
+  font-weight: 700;
+  color: #ffffff;
+  padding: 15px;
+}
+
+.product {
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-left: 30%;
+  margin-right: 30%;
+  padding: 10px;
+  margin-top: 20px;
 }
