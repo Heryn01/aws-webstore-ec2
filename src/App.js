@@ -65,7 +65,7 @@ function App() {
       break;
   }
 
-  const buttons = ["Broker", "Customer", "Department", "Login", "Marketing", "Products", "Reporting", "Video"];
+  const buttons = ["Broker", "Marketing", "Products", "Reporting", "Video"];
 
   return (
     <div className="App">
