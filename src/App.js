@@ -63,28 +63,28 @@ function App() {
       break;
   }
 
-  const buttons = ["Broker", "Customer", "Department", "Landing", "Login", "Marketing", "Products", "Reporting", "Video"];
+  const buttons = ["Broker", "Customer", "Department", "Login", "Marketing", "Products", "Reporting", "Video"];
 
   return (
     <div className="App">
-      <img src="acme-logo.png" alt="yo" onClick={() => setSelection('landing')}/>
       <div className="header">
-        {buttons.map(name =>
-          <button className="nav-bar-button" onClick={() => setSelection(name.toLowerCase())}>{name}</button>  
-        )}
-        <button className="nav-bar-button" onClick={() => setSelection('cart')}>Cart {cart.length > 0 && <>({cart.length})</>}</button>
-        {/**
-        <button className="nav-bar-button" onClick={() => setSelection('landing')}>Landing</button>
-        <button className="nav-bar-button" onClick={() => setSelection('products')}>Products</button>
-        <button className="nav-bar-button" onClick={() => setSelection('reporting')}>Reporting</button>
-        <button className="nav-bar-button" onClick={() => setSelection('employee')}>Employee</button>
-        <button className="nav-bar-button" onClick={() => setSelection('cart')}>Cart</button>
-        */}
-        
+        <table>
+          <tr>
+          <td style={{"width": "25%", "padding": "10px"}}>
+            <img src="acme-logo.png" alt="acme-logo-3.png" onClick={() => setSelection('landing')} style={{"height": "60px", "width": "auto", "cursor": "pointer"}}/>
+          </td>
+          <td>
+            {buttons.map(name =>
+            <button className={selection === name.toLowerCase() ? "nav-bar-button-selected": "nav-bar-button" }onClick={() => setSelection(name.toLowerCase())}>{name}</button>  
+            )}
+            <button className="nav-bar-button" onClick={() => setSelection('cart')}>Cart {cart.length > 0 && <>({cart.length})</>}</button>
+          </td>
+          </tr>
+        </table>
+      </div>
 
-        <div style={{"margin-top": "50px"}}>
-          {component}
-        </div>
+      <div className="main">
+        {component}
       </div>
     </div>
   );

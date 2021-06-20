@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import moment from 'moment';
+import '../../App.css';
+
 
 export default class Cart extends React.Component {
 
@@ -31,16 +33,37 @@ export default class Cart extends React.Component {
     let totalPrice = 0;
     this.props.cart.forEach(item => totalPrice += item.price);
     return (
-      <div>
+      <div style={{"textAlign": "center"}}>
+        <div className="page-header">
+          Your Shopping Cart - {this.props.cart.length} {this.props.cart.length === 1 ? "item" : "items"}
+        </div>
 
-        {this.props.cart.map(item =>
-          <div>
-            <h2>{item.name}</h2> - <i>{item.price}</i>
-          </div>  
-        )}
+        <table style={{"width": "80%", "padding-left": "30%", "padding-top": "70px", "textAlign": "left"}}>
+          <tr valign="top">
+            <td>
+              <table>
+                <tr><td><h3>Item</h3></td><td style={{"padding-left": "25%"}}><h3>Price</h3></td></tr>
+                {this.props.cart.map(item =>
+                  <tr>
+                    <td>{item.name}</td>
+                    <td style={{"padding-left": "25%"}}>{item.price}</td>
+                  </tr>
+                )}
+              </table>
+            </td>
+            <td>
+              <img src="shopping-cart.jpg" style={{"height": "50px", "width": "auto"}} alt="cart" /><br />
+              Cart Total: ${(totalPrice * 1.08).toFixed(2)}<br />
+        
+            </td>
+          </tr>
+          
+        
+        </table>
+        <br />
 
-        Cart Total: ${(totalPrice * 1.08).toFixed(2)}<br />
-        {totalPrice > 0 && <button onClick={() => {
+     
+        {totalPrice > 0 && <button className="nav-bar-button" onClick={() => {
           axios.post("http://localhost:8081/cart", {products: this.props.cart, time: moment().format()})
             .then(res => {
               console.log(res);
@@ -50,6 +73,8 @@ export default class Cart extends React.Component {
               }
             })
         }}>Checkout</button>}
+
+        
       </div>
     )
   }
