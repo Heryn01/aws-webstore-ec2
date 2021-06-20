@@ -1,24 +1,26 @@
 import React from 'react';
 import axios from 'axios';
+import { JsonToTable } from "react-json-to-table";
 
-export default class Reporting extends React.Component {
+export default class Products extends React.Component {
   state = {
-    data: []
+    reports: []
   }
 
   componentDidMount() {
     axios.get("http://localhost:8081/reporting")
       .then(res => {
-        const data = res.data.cart;
-        this.setState({ data });
+        const reports = res.data.product;
+        this.setState({ reports });
       })
   }
 
   render() {
     return (
       <div>
-        Reporting Page<br />
-      </div>
+      <JsonToTable json={this.state.reports} />
+    </div>
     )
   }
 }
+
