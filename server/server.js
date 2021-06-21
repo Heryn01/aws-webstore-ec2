@@ -1,6 +1,19 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const fs = require('fs');
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+    destination: (req, file, callBack) => {
+        callBack(null, 'serverFiles')
+    },
+    filename: (req, file, callBack) => {
+        callBack(null, `${file.originalname}`)
+    }
+  })
+  
+let upload = multer({ dest: 'serverFiles/' })
 
 const app = express();
 
@@ -228,6 +241,34 @@ app.get("/products", async (req, res) => {
   connection.execSql(request);
  
  })
+
+ app.get("/get-file/:fileName", async (req, res) => {
+
+  const fileName = req.params.fileName;
+  // You'll probably have to copy the full path to server/serverFiles here
+  res.status(200).sendFile("./serverFiles/" + fileName);
+
+ });
+
+ app.get("/get-all-files", async (req, res) => {
+
+  const testFolder = './serverFiles/';
+  fs.readdir(testFolder, (err, files) => {
+      res.status(200).send({files: files});
+  });
+
+});
+
+
+app.post('/post-file', upload.single('file'), (req, res, next) => {
+  const file = req.file;
+  if (!file) {
+    const error = new Error('No File')
+    error.httpStatusCode = 400
+    return next(error)
+  }
+    res.send(file);
+})
 
 // END OF NATHAN'S ROUTES
 
