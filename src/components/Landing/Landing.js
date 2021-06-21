@@ -45,7 +45,7 @@ export default class Landing extends React.Component {
       </table>
       <div style={{"textAlign": "center", "padding-left": "00%"}}>
         <h3>Website designed for ACME Corporation by <b><i>The Amazonians:</i></b></h3>
-        Joshua Gilliland, Nathan Albers, Heston Friedland, Poet Jones, Akinto Otoye, Gabriella Svendsen, and Ryan Wedell<br />
+        Joshua Gilliland, Nathan Albers, Heston Friedland, Poet Jones, Akintoye Oloko, Gabriella Svendsen, and Ryan Wedell<br />
         <h3>Powered by Amazon Web Services</h3>
       </div>
         </div>       

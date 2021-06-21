@@ -9,11 +9,12 @@ const storage = multer.diskStorage({
         callBack(null, 'serverFiles')
     },
     filename: (req, file, callBack) => {
-        callBack(null, `${file.originalname}`)
+        const { originalname } = file;
+        callBack(null, originalname)
     }
   })
   
-let upload = multer({ dest: 'serverFiles/' })
+const upload = multer({ storage: storage })
 
 const app = express();
 
@@ -246,7 +247,7 @@ app.get("/products", async (req, res) => {
 
   const fileName = req.params.fileName;
   // You'll probably have to copy the full path to server/serverFiles here
-  res.status(200).sendFile("./serverFiles/" + fileName);
+  res.status(200).sendFile("AddYourPathHere/serverFiles/" + fileName);
 
  });
 
