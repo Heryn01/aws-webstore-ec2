@@ -247,7 +247,7 @@ app.get("/products", async (req, res) => {
 
   const fileName = req.params.fileName;
   // You'll probably have to copy the full path to server/serverFiles here
-  res.status(200).sendFile("./serverFiles/" + fileName);
+  res.status(200).sendFile("/home/ubuntu/aws-webstore-ec2/server/serverFiles/" + fileName);
 
  });
 
