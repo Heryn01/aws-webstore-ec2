@@ -21,7 +21,7 @@ export default class Cart extends React.Component {
   }*/
 
   componentDidMount() {
-    axios.get("ec2-18-208-184-244.compute-1.amazonaws.com:8081/cart")
+    axios.get("http://ec2-18-208-184-244.compute-1.amazonaws.com:8081/cart")
       .then(res => {
         const data = res.data.cart;
         this.setState({ data });
@@ -64,7 +64,7 @@ export default class Cart extends React.Component {
 
      
         {totalPrice > 0 && <button className="nav-bar-button" onClick={() => {
-          axios.post("ec2-18-208-184-244.compute-1.amazonaws.com:8081/cart", {products: this.props.cart, time: moment().format()})
+          axios.post("http://ec2-18-208-184-244.compute-1.amazonaws.com:8081/cart", {products: this.props.cart, time: moment().format()})
             .then(res => {
               console.log(res);
               if(res.status == 200) {
