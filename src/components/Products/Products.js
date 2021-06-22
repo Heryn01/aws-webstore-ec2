@@ -14,7 +14,7 @@ export default class Products extends React.Component {
  
 
   componentDidMount() {
-    axios.get("http://localhost:8081/products")
+    axios.get("ec2-18-208-184-244.compute-1.amazonaws.com:8081/products")
       .then(res => {
         const products = res.data.products;
         this.setState({ products });
