@@ -8,7 +8,7 @@ export default class Products extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("http://localhost:8081/reporting")
+    axios.get("http://ec2-18-208-184-244.compute-1.amazonaws.com:8081/reporting")
       .then(res => {
         const reports = res.data.product;
         this.setState({ reports });

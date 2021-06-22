@@ -7,7 +7,7 @@ export default class Department extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("http://localhost:8081/department")
+    axios.get("http://ec2-18-208-184-244.compute-1.amazonaws.com:8081/department")
       .then(res => {
         const data = res.data.cart;
         this.setState({ data });

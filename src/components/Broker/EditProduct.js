@@ -17,7 +17,7 @@ function EditProduct(product) {
       <b>Category: </b><input value={cat} onChange={e => setCat(e.target.value)}/><br /><br />
       <b>Description: </b><input value={desc} onChange={e => setDesc(e.target.value)}/><br /><br />
       <button className="nav-bar-button-selected" onClick={() => {
-        axios.post("http://localhost:8081/edit-product", {
+        axios.post("http://ec2-18-208-184-244.compute-1.amazonaws.com:8081/edit-product", {
           id: product.product.ProductID,
           name: name,
           desc: desc,
@@ -31,7 +31,7 @@ function EditProduct(product) {
         })
       }}>Save Changes</button>
       <button className="nav-bar-button" onClick={() => {
-        axios.post("http://localhost:8081/delete-product", {id: product.product.ProductID})
+        axios.post("http://ec2-18-208-184-244.compute-1.amazonaws.com:8081/delete-product", {id: product.product.ProductID})
         .then(res => {
           if(res.status === 200) {
             alert("Product Deleted");

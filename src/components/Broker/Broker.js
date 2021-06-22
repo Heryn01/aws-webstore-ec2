@@ -22,7 +22,7 @@ export default class Broker extends React.Component {
   
 
   componentDidMount() {
-    axios.get("http://localhost:8081/broker")
+    axios.get("http://ec2-18-208-184-244.compute-1.amazonaws.com:8081/broker")
       .then(res => {
         const products = res.data.data;
         this.setState({ products });
@@ -67,7 +67,7 @@ export default class Broker extends React.Component {
             <b>Description: </b> <input onChange={this.handleDescriptionChange}/><br /><br />
 
             <button className="nav-bar-button-selected" onClick={() => {
-              axios.post("http://localhost:8081/new-product", {
+              axios.post("http://ec2-18-208-184-244.compute-1.amazonaws.com:8081/new-product", {
                 name: this.state.name,
                 desc: this.state.desc,
                 price: this.state.price,

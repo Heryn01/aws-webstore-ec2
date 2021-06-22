@@ -11,7 +11,7 @@ export default class Marketing extends React.Component {
 
   componentDidMount() {
     //axios.get("http://localhost:8081/get-file/" + "acme-logo.png")
-    axios.get("http://localhost:8081/get-all-files")
+    axios.get("http://ec2-18-208-184-244.compute-1.amazonaws.com:8081/get-all-files")
       .then(res => {
         const data = res.data.files;
         this.setState({ data });
@@ -20,7 +20,7 @@ export default class Marketing extends React.Component {
 
   sendFile(file) {
     console.log(file);
-    axios.post("http://localhost:8081/post-file", {file: new File(file), fileName: file.name})
+    axios.post("http://ec2-18-208-184-244.compute-1.amazonaws.com:8081/post-file", {file: new File(file), fileName: file.name})
       .then(res => {
         console.log(res.status);
       })
@@ -35,7 +35,7 @@ export default class Marketing extends React.Component {
 
         <h2>Existing Files: click to download</h2>
         {this.state.data && this.state.data.map(file => 
-          <div><a className="nav-bar-button" href={'http://localhost:8081/get-file/'+file} target="_blank" download>{file}</a><br /><br /></div>
+          <div><a className="nav-bar-button" href={'http://ec2-18-208-184-244.compute-1.amazonaws.com:8081/get-file/'+file} target="_blank" download>{file}</a><br /><br /></div>
         )}
 
         <h2>Upload a new file:</h2>
@@ -48,7 +48,7 @@ export default class Marketing extends React.Component {
 
           const data = new FormData() ;
           data.append('file', this.state.selectedFile);
-          axios.post("http://localhost:8081/post-file/", data, this.state.selectedFile.fileName)
+          axios.post("http://ec2-18-208-184-244.compute-1.amazonaws.com:8081/post-file/", data, this.state.selectedFile.fileName)
               .then(res => { // then print response status
                 console.log(res.statusText)
               })
