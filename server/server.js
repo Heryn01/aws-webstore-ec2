@@ -14,7 +14,7 @@ const storage = multer.diskStorage({
     }
   })
   
-let upload = multer({ dest: 'serverFiles/' })
+let upload = multer({ storage:storage })
 
 const app = express();
 
