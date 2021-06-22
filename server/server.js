@@ -9,7 +9,8 @@ const storage = multer.diskStorage({
         callBack(null, 'serverFiles')
     },
     filename: (req, file, callBack) => {
-        callBack(null, `${file.originalname}`)
+        const { originalname } = file;
+        callBack(null, originalname)
     }
   })
   
@@ -47,7 +48,7 @@ var Request = require('tedious').Request;
 var TYPES = require('tedious').TYPES;  
 
 var corsOptions = {
-  origin: "http://ec2-18-208-184-244.compute-1.amazonaws.com:3000/"
+  origin: "http://ec2-18-208-184-244.compute-1.amazonaws.com:3000"
 };
 
 app.use(cors(corsOptions));
